@@ -160,4 +160,74 @@ public class OrderDAO {
         }
         return false;
     }
+
+    public Order findById(int orderId) {
+        String sql = "SELECT * FROM orders WHERE order_id = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, orderId);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Order o = new Order();
+
+                o.setOrderId(rs.getInt("order_id"));
+                o.setCustomerId(rs.getInt("customer_id"));
+                o.setCustomerName(rs.getString("customer_name"));
+                o.setPhoneNumber(rs.getString("phone_number"));
+                o.setEmail(rs.getString("email"));
+                o.setAddress(rs.getString("address"));
+                o.setTotalMoney(rs.getDouble("total_money"));
+                o.setStatus(OrderStatus.valueOf(rs.getString("status")));
+                o.setCreatedDate(rs.getTimestamp("created_date"));
+                return o;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public Order findById(int orderId,Connection conn) {
+        String sql = "SELECT * FROM orders WHERE order_id = ?";
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, orderId);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Order o = new Order();
+
+                o.setOrderId(rs.getInt("order_id"));
+                o.setCustomerId(rs.getInt("customer_id"));
+                o.setCustomerName(rs.getString("customer_name"));
+                o.setPhoneNumber(rs.getString("phone_number"));
+                o.setEmail(rs.getString("email"));
+                o.setAddress(rs.getString("address"));
+                o.setTotalMoney(rs.getDouble("total_money"));
+                o.setStatus(OrderStatus.valueOf(rs.getString("status")));
+                o.setCreatedDate(rs.getTimestamp("created_date"));
+                return o;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public boolean cancelOrder(int orderId, Connection conn) throws SQLException {
+        String sql = "UPDATE orders SET status='CANCELLED' WHERE order_id=?";
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, orderId);
+            return ps.executeUpdate() > 0;
+        }
+    }
 }

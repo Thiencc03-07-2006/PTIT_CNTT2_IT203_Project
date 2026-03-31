@@ -46,7 +46,7 @@ public class OrderManagement {
                     break;
                 }
                 case 6 : {
-//                    orderFeature.cancelOrder();
+                    orderFeature.cancelOrder();
                     break;
                 }
                 case 7 : {
