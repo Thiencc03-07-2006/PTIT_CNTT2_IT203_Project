@@ -14,11 +14,11 @@ public class AdminManagement {
             System.out.println("|                                        |                                    |                                        |");
             System.out.println("|      1. Categories management          |      2. Products management        |           3. Orders management         |");
             System.out.println("|                                        |                                    |                                        |");
-            System.out.println("|━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━|");
-            System.out.println("|                             |                              |                              |                          |");
-            System.out.println("|   4. Customers management   |        5. Statistical        |         6. List role         |         7. Logout        |");
-            System.out.println("|                             |                              |                              |                          |");
-            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+            System.out.println("|━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+            System.out.println("|                                        |                                    |                                        |");
+            System.out.println("|      4. Customers management           |           5. Statistical           |                7. Logout               |");
+            System.out.println("|                                        |                                    |                                        |");
+            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
 
             int choice = InputMethod.getNumber("Enter choice : ");
             switch (choice){
@@ -43,10 +43,6 @@ public class AdminManagement {
                     break;
                 }
                 case 6 : {
-//                    displayRole();
-                    break;
-                }
-                case 7 : {
                     Session.logout();
                     return;
                 }
@@ -56,35 +52,4 @@ public class AdminManagement {
             }
         }
     }
-
-//    public static void displayRole(){
-//        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-//        System.out.println("|                                     "+ GetColor.GREEN+"LIST ROLE"+GetColor.RESET+"                               |");
-//        System.out.println("┏━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-//        System.out.println("|     STT     |                         Role Name                             |");
-//        int i = 1 ;
-//        for(Role role : Role.values()){
-//            System.out.println("|━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|");
-//            System.out.printf("|      %-6d | %-61s |\n",i,role);
-//            System.out.println("|━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|");
-//            i++ ;
-//        }
-//        System.out.println("|━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|");
-//        System.out.println("|                                     0. Back                                 |");
-//        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-//        int choice ;
-//        while (true){
-//            try {
-//                System.out.println("Enter 0 to back !");
-//                choice = Integer.parseInt(InputMethod.scanner.nextLine().trim());
-//                if(choice == 0){
-//                    break;
-//                }else {
-//                    System.err.println("Try enter !");
-//                }
-//            }catch (NumberFormatException e){
-//                System.err.println("Input invalid !");
-//            }
-//        }
-//    }
 }

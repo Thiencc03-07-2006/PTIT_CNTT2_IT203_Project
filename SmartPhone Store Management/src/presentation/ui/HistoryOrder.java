@@ -15,19 +15,20 @@ import java.util.Locale;
 
 public class HistoryOrder {
     private final OrderService orderService = OrderService.getInstance();
+    private final OrderUI orderUi=new OrderUI();
 
     public void seeOrderDetail() {
         int orderId = InputMethod.getNumber("Enter order id : ");
         Order order = orderService.findOrderById(orderId);
         if (order == null) {
-            System.err.println("Not found order id !");
+            System.out.println("Not found order id !");
         } else {
             int currentPage = 1;
             int itemPerPage = 5;
             while (true) {
                 List<OrderDetail> orderDetails = orderService.getOrderDetails(orderId);
                 if (orderDetails.isEmpty()) {
-                    System.err.println("Order empty !");
+                    System.out.println("Order empty !");
                     break;
                 } else {
                     int skip = (currentPage - 1) * itemPerPage;
@@ -41,7 +42,7 @@ public class HistoryOrder {
                                 currentPage--;
                                 skip = (currentPage - 1) * itemPerPage;
                             } else {
-                                System.err.println("Cannot previous !");
+                                System.out.println("Cannot previous !");
                             }
                             break;
                         }
@@ -53,12 +54,12 @@ public class HistoryOrder {
                                 currentPage++;
                                 skip = (currentPage - 1) * itemPerPage;
                             } else {
-                                System.err.println("Cannot next !");
+                                System.out.println("Cannot next !");
                             }
                             break;
                         }
                         default: {
-                            System.err.println("Enter choice from 1 to 6 !");
+                            System.out.println("Enter choice from 1 to 6 !");
                         }
                     }
                 }
@@ -69,7 +70,7 @@ public class HistoryOrder {
 
     public void displayList() {
         if (!Session.isLogin()) {
-            System.err.println("Please log in first !");
+            System.out.println("Please log in first !");
             return;
         }
         List<Order> orders = orderService.getMyOrders(Session.getCurrentUser().getUserId());
@@ -79,7 +80,7 @@ public class HistoryOrder {
         int skip = (currentPage - 1) * itemPerPage;
         int size = orders.size();
         if (orders.isEmpty()) {
-            System.err.println("List orders is empty !");
+            System.out.println("List orders is empty !");
         } else {
             while (true) {
                 System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -122,9 +123,7 @@ public class HistoryOrder {
                 System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
                 System.out.println("|              1. Previous page               |                      2. Back                   |               3. Next page              |");
                 System.out.println("|━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-                System.out.println("|           4. Search order by id             |           5. Search order by day a -> b        |         6. Search order by status       |");
-                System.out.println("|━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-                System.out.println("|         7. See order detail by id           |                   8. Cancel order              |           9. Update status receive      |");
+                System.out.println("|        4. Search order by day a -> b        |           5. See order detail by id            |             6. Cancel order             |");
                 System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
 
                 int choice = InputMethod.getNumber("Enter choice : ");
@@ -134,7 +133,7 @@ public class HistoryOrder {
                             currentPage--;
                             skip = (currentPage - 1) * itemPerPage;
                         } else {
-                            System.err.println("Cannot previous !");
+                            System.out.println("Cannot previous !");
                         }
                         break;
                     }
@@ -146,71 +145,23 @@ public class HistoryOrder {
                             currentPage++;
                             skip = (currentPage - 1) * itemPerPage;
                         } else {
-                            System.err.println("Cannot next !");
+                            System.out.println("Cannot next !");
                         }
                         break;
                     }
                     case 4: {
-//                        orderFeature.searchById(orders);
                         break;
                     }
                     case 5: {
-//                        orderFeature.searchOrderByDay(orders);
-                        break;
-                    }
-                    case 6: {
-//                        orderFeature.searchByStatus(orders);
-                        break;
-                    }
-                    case 7: {
                         seeOrderDetail();
                         break;
                     }
-                    case 8: {
-//                        List<Order> orders1 = IMethod.listOrder();
-//                        int idOrder = IMethod.getNumber("Enter id order want cancel : ");
-//                        int indexOrder = orders.stream().map(Order::getOrderId).toList().indexOf(idOrder);
-//                        if (indexOrder == -1) {
-//                            System.err.println("Not found id order !");
-//                        } else {
-//                            indexOrder = orders1.stream().map(Order::getOrderId).toList().indexOf(idOrder);
-//                            if (orders1.get(indexOrder).getStatus() == 1) {
-//                                orders1.get(indexOrder).setStatus(0);
-//                                IMethod.saveDatabase(IMethod.fileOrder, orders1);
-//                                List<Product> products = IMethod.listProduct();
-//                                for (ProductCart productCart : orders1.get(indexOrder).getCarts()) {
-//                                    String productName = productCart.getProductName();
-//                                    int indexProduct = products.stream().map(Product::getProductName).toList().indexOf(productName);
-//                                    products.get(indexProduct).setInventory(products.get(indexProduct).getInventory() + productCart.getQuantity());
-//                                }
-//                                IMethod.saveDatabase(IMethod.fileProduct, products);
-//                                System.out.println("Cancel order success !");
-//                            } else {
-//                                System.err.println("Cannot cancel order because order status is : " + orders1.get(indexOrder).printStatus(orders1.get(indexOrder).getStatus()));
-//                            }
-//                        }
-                        break;
-                    }
-                    case 9: {
-//                        List<Order> orders1 = IMethod.listOrder();
-//                        int idOrder = IMethod.getNumber("Enter id order want update : ");
-//                        int indexOrder = orders.stream().map(Order::getOrderId).toList().indexOf(idOrder);
-//                        if (indexOrder == -1) {
-//                            System.err.println("Not found id order !");
-//                        } else {
-//                            indexOrder = orders1.stream().map(Order::getOrderId).toList().indexOf(idOrder);
-//                            if (orders1.get(indexOrder).getStatus() == 3) {
-//                                orders1.get(indexOrder).setStatus(4);
-//                                IMethod.saveDatabase(IMethod.fileOrder, orders1);
-//                                System.out.println("update order status delivered success !");
-//                            } else {
-//                                System.err.println("Cannot update order because order status is : " + orders1.get(indexOrder).printStatus(orders1.get(indexOrder).getStatus()));
-//                            }
-//                        }
+                    case 6: {
+                        orderUi.cancelOrder();
                         break;
                     }
                     default: {
-                        System.err.println("Enter choice from 1 to 9 !");
+                        System.out.println("Enter choice from 1 to 6 !");
                     }
                 }
             }

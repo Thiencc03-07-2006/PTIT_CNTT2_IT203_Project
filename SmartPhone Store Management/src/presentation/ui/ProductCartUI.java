@@ -16,7 +16,7 @@ public class ProductCartUI {
         int skip = (currentPage -1 ) * itemPerPage ;
         int size = productCarts.size();
         if(productCarts.isEmpty()){
-            System.err.println("List products cart is empty !");
+            System.out.println("List products cart is empty !");
         }else {
             while (true){
                 NumberFormat format = NumberFormat.getInstance(Locale.GERMANY);
@@ -71,7 +71,7 @@ public class ProductCartUI {
                             currentPage--;
                             skip = (currentPage -1 ) * itemPerPage ;
                         }else {
-                            System.err.println("Cannot previous !");
+                            System.out.println("Cannot previous !");
                         }
                         break;
                     }
@@ -83,7 +83,7 @@ public class ProductCartUI {
                             currentPage++;
                             skip = (currentPage -1 ) * itemPerPage ;
                         }else {
-                            System.err.println("Cannot next !");
+                            System.out.println("Cannot next !");
                         }
                         break;
                     }

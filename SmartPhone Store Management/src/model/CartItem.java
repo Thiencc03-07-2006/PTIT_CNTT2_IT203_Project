@@ -3,6 +3,7 @@ package model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Getter
@@ -12,5 +13,5 @@ public class CartItem {
     private Integer customerId;
     private Integer productId;
     private Integer quantity;
-    private Date createdDate;
+    private Timestamp createdDate;
 }

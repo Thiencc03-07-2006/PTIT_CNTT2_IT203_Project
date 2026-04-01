@@ -43,7 +43,7 @@ public class OrderService {
         Order order = orderDAO.findById(orderId);
 
         if (order == null) {
-            System.err.println("Order not found!");
+            System.out.println("Order not found!");
             return false;
         }
 
@@ -54,11 +54,11 @@ public class OrderService {
             case PENDING -> next = OrderStatus.SHIPPING;
             case SHIPPING -> next = OrderStatus.DELIVERED;
             case DELIVERED -> {
-                System.err.println("Order already delivered!");
+                System.out.println("Order already delivered!");
                 return false;
             }
             case CANCELLED -> {
-                System.err.println("Order cancelled!");
+                System.out.println("Order cancelled!");
                 return false;
             }
             default -> {
@@ -80,12 +80,12 @@ public class OrderService {
             Order order = orderDAO.findById(orderId, conn);
 
             if (order == null) {
-                System.err.println("Order not found!");
+                System.out.println("Order not found!");
                 return false;
             }
 
             if (order.getStatus() != OrderStatus.PENDING) {
-                System.err.println("Only PENDING orders can be cancelled!");
+                System.out.println("Only PENDING orders can be cancelled!");
                 return false;
             }
 

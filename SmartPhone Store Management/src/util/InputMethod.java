@@ -21,10 +21,10 @@ public class InputMethod {
                 if (number >= 0) {
                     break;
                 } else {
-                    System.err.println("Enter number >= 0 !");
+                    System.out.println("Enter number >= 0 !");
                 }
             } catch (Exception e) {
-                System.err.println("Number invalid !");
+                System.out.println("Number invalid !");
             }
         }
         return number;
@@ -39,10 +39,10 @@ public class InputMethod {
                 if (number > 0) {
                     break;
                 } else {
-                    System.err.println("Enter number > 0 !");
+                    System.out.println("Enter number > 0 !");
                 }
             } catch (Exception e) {
-                System.err.println("Number invalid !");
+                System.out.println("Number invalid !");
             }
         }
         return number;
@@ -54,7 +54,7 @@ public class InputMethod {
             System.out.print(label);
             rs = InputMethod.scanner.nextLine().trim();
             if (rs.isEmpty()) {
-                System.err.println("Cannot be left blank !");
+                System.out.println("Cannot be left blank !");
             } else {
                 break;
             }

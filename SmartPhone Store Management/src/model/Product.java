@@ -9,6 +9,7 @@ import util.InputMethod;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.text.NumberFormat;
 import java.util.*;
 
@@ -25,7 +26,7 @@ public class Product implements Serializable {
     private String description;
     private Integer cateId;
     private ProductStatus status;
-    private Date createdDate;
+    private Timestamp createdDate;
     private String brand;
     private String storage;
 
@@ -46,7 +47,7 @@ public class Product implements Serializable {
     public void displayData() {
         NumberFormat format = NumberFormat.getInstance(Locale.GERMANY);
         System.out.println("┏━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━┳━━━━━━━━━━━━━━━┳━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━┳━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.printf("| %-3d | %-28s | %-3s | %-13s | %-3d | %-18s | %-8s | %-3d | %-18s |\n", productId, productName, discount + "%", format.format(getFinalPrice()) + "VNĐ", inventory, storage, color, cateId, status);
+        System.out.printf("| %-3d | %-28s | %-3s | %-13s | %-3d | %-18s | %-8s | %-3s | %-18s |\n", productId, productName, discount + "%", format.format(getFinalPrice()) + "VNĐ", inventory, storage, color, cateId, status);
         System.out.println("┗━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━┻━━━━━━━━━━━━━━━┻━━━━━┻━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━┻━━━━━┻━━━━━━━━━━━━━━━━━━━━┛");
     }
 

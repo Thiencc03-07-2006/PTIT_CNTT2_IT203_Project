@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -20,7 +21,7 @@ public class User implements Serializable {
     private String address;
     private Role role = Role.CUSTOMER;
     private Boolean status = true;
-    private Date createdDate;
+    private Timestamp createdDate;
 
 
     public void displayData() {

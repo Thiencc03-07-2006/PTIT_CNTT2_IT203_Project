@@ -10,17 +10,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * CartDAO - Lớp quản lý các thao tác dữ liệu liên quan đến Giỏ hàng (Cart).
+ * Sử dụng Design Pattern: Singleton để tối ưu hóa việc khởi tạo đối tượng.
+ */
 public class CartDAO {
     private static CartDAO instance;
-
+//Lấy instance duy nhất của lớp CartDAO.
     public static CartDAO getInstance() {
         if (instance == null) {
             instance = new CartDAO();
         }
         return instance;
     }
-
+//    Tìm kiếm một sản phẩm cụ thể trong giỏ hàng của một khách hàng.
     public CartItem findByCustomerAndProduct(int customerId, int productId) {
         String sql = "SELECT * FROM cart WHERE customer_id=? AND product_id=?";
 
@@ -46,7 +49,7 @@ public class CartDAO {
         }
         return null;
     }
-
+//Thêm mới một sản phẩm vào giỏ hàng.
     public boolean insert(CartItem c) {
         String sql = "INSERT INTO cart(customer_id, product_id, quantity) VALUES (?, ?, ?)";
 
@@ -64,7 +67,7 @@ public class CartDAO {
         }
         return false;
     }
-
+//Cập nhật số lượng của một mục trong giỏ hàng.
     public boolean updateQuantity(int customerId, int cartId, int quantity) {
         String sql = "UPDATE cart SET quantity=? WHERE cart_id=? AND customer_id=?";
 
@@ -82,7 +85,7 @@ public class CartDAO {
         }
         return false;
     }
-
+//Xóa một mục cụ thể khỏi giỏ hàng.
     public boolean deleteItem(int customerId, int cartId) {
         String sql = "DELETE FROM cart WHERE cart_id=? AND customer_id=?";
 
@@ -99,7 +102,7 @@ public class CartDAO {
         }
         return false;
     }
-
+//Xóa sạch giỏ hàng của một khách hàng
     public boolean clearCart(int customerId) {
         String sql = "DELETE FROM cart WHERE customer_id=?";
 
@@ -115,7 +118,7 @@ public class CartDAO {
         }
         return false;
     }
-
+//Xóa sạch giỏ hàng sử dụng Connection được truyền vào
     public boolean clearCart(int customerId, Connection conn) {
         String sql = "DELETE FROM cart WHERE customer_id=?";
 
@@ -130,7 +133,7 @@ public class CartDAO {
         }
         return false;
     }
-
+//    Lấy danh sách chi tiết các sản phẩm trong giỏ hàng kèm thông tin từ bảng Products
     public List<ProductCart> getCartByCustomer(int customerId) {
         List<ProductCart> list = new ArrayList<>();
         String sql = """
@@ -170,7 +173,7 @@ public class CartDAO {
 
         return list;
     }
-
+//    Hàm hỗ trợ lấy giỏ hàng
     public List<ProductCart> getCartByCustomer(int customerId, Connection conn) {
         List<ProductCart> list = new ArrayList<>();
         String sql = """
@@ -209,7 +212,7 @@ public class CartDAO {
 
         return list;
     }
-
+//Ánh xạ kết quả từ ResultSet sang đối tượng CartItem
     private CartItem mapToCartItem(ResultSet rs) throws SQLException {
         CartItem c = new CartItem();
 

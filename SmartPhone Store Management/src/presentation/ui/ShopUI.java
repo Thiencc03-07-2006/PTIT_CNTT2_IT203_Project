@@ -33,7 +33,7 @@ public class ShopUI {
         int skip = (currentPage - 1) * itemPerPage;
         int size = products.size();
         if (products.isEmpty()) {
-            System.err.println("List products is empty !");
+            System.out.println("List products is empty !");
         } else {
             while (true) {
                 System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -50,7 +50,8 @@ public class ShopUI {
                         }
                     }
                 } else {
-                    System.err.println("Not found product !");
+                    System.out.println("Not found product !");
+                    return;
                 }
                 StringBuilder pagination = new StringBuilder();
                 int startPage;
@@ -91,10 +92,8 @@ public class ShopUI {
                 System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
                 System.out.println("|            1. Previous page             |                   2. Back                 |           3. Next page              |");
                 System.out.println("|━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|");
-                System.out.println("|     4. Search by name or description    |            5. See product detail          |             6. Sort product         |");
-                System.out.println("|━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|");
-                System.out.println("|                       7. List new products                    |               8. Search product by catalog                |");
-                System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+                System.out.println("|           4. Search by name             |            5. See product detail          |           6. Sort product           |");
+                System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 
                 int choice = InputMethod.getNumber("Enter choice : ");
                 switch (choice) {
@@ -103,7 +102,7 @@ public class ShopUI {
                             currentPage--;
                             skip = (currentPage - 1) * itemPerPage;
                         } else {
-                            System.err.println("Cannot previous !");
+                            System.out.println("Cannot previous !");
                         }
                         break;
                     }
@@ -115,7 +114,7 @@ public class ShopUI {
                             currentPage++;
                             skip = (currentPage - 1) * itemPerPage;
                         } else {
-                            System.err.println("Cannot next !");
+                            System.out.println("Cannot next !");
                         }
                         break;
                     }
@@ -131,21 +130,8 @@ public class ShopUI {
                         productFeature.sortProduct();
                         break;
                     }
-                    case 7: {
-//                        List<Product> products1 = InputMethod.listProduct();
-//                        products = products1.stream()
-//                                .sorted((productA, productB) -> productB.getCreatedDate()
-//                                        .compareTo(productA.getCreatedDate())).toList().stream()
-//                                .limit(10).toList();
-//                        productFeature.displayList(products);
-                        break;
-                    }
-                    case 8: {
-//                        searchProductByCatalog(products);
-                        break;
-                    }
                     default: {
-                        System.err.println("Enter choice from 1 to 8 !");
+                        System.out.println("Enter choice from 1 to 6 !");
                     }
                 }
             }
@@ -153,24 +139,6 @@ public class ShopUI {
     }
 
     private void searchProductByCatalog(List<Product> products) {
-//        List<Category> categories = InputMethod.listCategory();
-//        CategoryUI categoryFeature = new CategoryUI();
-//        categoryFeature.displayList(categories);
-//        int cateId;
-//        int indexCatalog;
-//        while (true) {
-//            cateId = InputMethod.getNumber("Enter id catalog want search : ");
-//            indexCatalog = categories.stream().map(Category::getCateId).toList().indexOf(cateId);
-//            if (indexCatalog != -1) {
-//                break;
-//            } else {
-//                System.err.println("Not found id catalog !");
-//            }
-//        }
-//        int finalCateId = cateId;
-//        products = products.stream().filter(product -> product.getCateId() == finalCateId).toList();
-//        ProductUI productFeature = new ProductUI();
-//        productFeature.displayList(products);
     }
 
     private boolean seeProductDetail() {
@@ -210,12 +178,12 @@ public class ShopUI {
             switch (select) {
                 case 1: {
                     if (Session.isLogin()) {
-                        System.err.println("Please log in first !");
+                        System.out.println("Please log in first !");
                     }
 //                    List<FavoriteProduct> favoriteProducts = InputMethod.listFavoriteProduct();
 //                    boolean isExist = favoriteProducts.stream().anyMatch(favoriteProduct -> Objects.equals(favoriteProduct.getFavoriteProducts().getProductId(), product.getProductId()));
 //                    if (isExist) {
-//                        System.err.println("The product is already in your favorites list !");
+//                        System.out.println("The product is already in your favorites list !");
 //                    } else {
 //                        FavoriteProduct favoriteProduct = new FavoriteProduct(product, idCustomer);
 //                        favoriteProducts.add(favoriteProduct);
@@ -223,14 +191,14 @@ public class ShopUI {
 //                        if (result) {
 //                            System.out.println("Add favorite product successfully !");
 //                        } else {
-//                            System.err.println("Add favorite product error !");
+//                            System.out.println("Add favorite product error !");
 //                        }
 //                    }
                     break;
                 }
                 case 2: {
                     if (!Session.isLogin()) {
-                        System.err.println("Please log in first !");
+                        System.out.println("Please log in first !");
                     }
                     if(product.getStatus()!= ProductStatus.ACTIVE){
                         System.out.println("Out of stock");
@@ -240,9 +208,9 @@ public class ShopUI {
                     while (true) {
                         quantity = InputMethod.getNumber("Enter quantity : ");
                         if (quantity <= 0) {
-                            System.err.println("Quantity must > 0 !");
+                            System.out.println("Quantity must > 0 !");
                         } else if (quantity > product.getInventory()) {
-                            System.err.println("Quantity > inventory !");
+                            System.out.println("Quantity > inventory !");
                         } else {
                             break;
                         }
@@ -250,13 +218,13 @@ public class ShopUI {
                     if (cartService.addToCart(idCustomer, product, quantity)) {
                         System.out.println("Add to cart successfully !");
                     } else {
-                        System.err.println("Add to cart error !");
+                        System.out.println("Add to cart error !");
                     }
                     break;
                 }
                 case 3: {
 //                    if (checkLogin.getFirst() == null) {
-//                        System.err.println("Please log in first !");
+//                        System.out.println("Please log in first !");
 //                        Login.main(args);
 //                    }
 //                    int quantity = InputMethod.getNumber("Enter quantity : ");
@@ -271,7 +239,7 @@ public class ShopUI {
                     return true;
                 }
                 default: {
-                    System.err.println("Enter choice from 1 to 4 !");
+                    System.out.println("Enter choice from 1 to 4 !");
                 }
             }
 

@@ -56,7 +56,7 @@ public class ProductManagement {
                     return;
                 }
                 default:{
-                    System.err.println("Enter choice from 1 to 7 !");
+                    System.out.println("Enter choice from 1 to 7 !");
                 }
             }
         }

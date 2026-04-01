@@ -4,8 +4,6 @@ import model.User;
 import service.UserService;
 import util.InputMethod;
 
-import java.util.Date;
-import java.util.Scanner;
 
 public class RegisterUI {
     private static final UserService userService = UserService.getInstance();
@@ -26,7 +24,7 @@ public class RegisterUI {
         while (true) {
             String email = InputMethod.getString("Email: ");
 
-            if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            if (!email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
                 System.out.println("Invalid email!");
             } else if (userService.existsByEmail(email)) {
                 System.out.println("Email already exists!");

@@ -22,7 +22,7 @@ public class CartService {
     public boolean addToCart(int customerId, Product product, int quantity) {
 
         if (quantity > product.getInventory()) {
-            System.err.println("Quantity exceeds inventory!");
+            System.out.println("Quantity exceeds inventory!");
             return false;
         }
 
@@ -32,7 +32,7 @@ public class CartService {
             int newQuantity = existing.getQuantity() + quantity;
 
             if (newQuantity > product.getInventory()) {
-                System.err.println("Total quantity exceeds inventory!");
+                System.out.println("Total quantity exceeds inventory!");
                 return false;
             }
 
@@ -54,13 +54,13 @@ public class CartService {
 
     public boolean updateQuantity(int customerId, int cartId, int quantity) {
         if (quantity <= 0) {
-            System.err.println("Quantity must > 0 !");
+            System.out.println("Quantity must > 0 !");
             return false;
         }
 
         CartItem cartItem = cartDAO.findById(cartId);
         if (cartItem == null) {
-            System.err.println("Cart not found!");
+            System.out.println("Cart not found!");
             return false;
         }
 
@@ -68,12 +68,12 @@ public class CartService {
                 .findById(cartItem.getProductId());
 
         if (product == null) {
-            System.err.println("Product not found!");
+            System.out.println("Product not found!");
             return false;
         }
 
         if (quantity > product.getInventory()) {
-            System.err.println("Quantity exceeds inventory!");
+            System.out.println("Quantity exceeds inventory!");
             return false;
         }
         return cartDAO.updateQuantity(customerId, cartId, quantity);
@@ -99,7 +99,7 @@ public class CartService {
             List<ProductCart> carts = cartDAO.getCartByCustomer(customerId, conn);
 
             if (carts.isEmpty()) {
-                System.err.println("Cart empty!");
+                System.out.println("Cart empty!");
                 return false;
             }
 
@@ -108,7 +108,7 @@ public class CartService {
                 Product product = productDAO.findById(item.getProductId(), conn);
 
                 if (item.getQuantity() > product.getInventory()) {
-                    System.err.println("Product out of stock: " + product.getProductName());
+                    System.out.println("Product out of stock: " + product.getProductName());
                     conn.rollback();
                     return false;
                 }

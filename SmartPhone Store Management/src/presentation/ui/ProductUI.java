@@ -25,7 +25,7 @@ public class ProductUI {
         int skip = (currentPage - 1) * itemPerPage;
         int size = products.size();
         if (products.isEmpty()) {
-            System.err.println("List products is empty !");
+            System.out.println("List products is empty !");
         } else {
             while (true) {
                 System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -92,7 +92,7 @@ public class ProductUI {
                             currentPage--;
                             skip = (currentPage - 1) * itemPerPage;
                         } else {
-                            System.err.println("Cannot previous !");
+                            System.out.println("Cannot previous !");
                         }
                         break;
                     }
@@ -104,7 +104,7 @@ public class ProductUI {
                             currentPage++;
                             skip = (currentPage - 1) * itemPerPage;
                         } else {
-                            System.err.println("Cannot next !");
+                            System.out.println("Cannot next !");
                         }
                         break;
                     }
@@ -130,7 +130,7 @@ public class ProductUI {
                     p.setRootPrice(rootPrice);
                     break;
                 } else {
-                    System.err.println("Selling price > 0 !");
+                    System.out.println("Selling price > 0 !");
                 }
             }
             while (true) {
@@ -139,7 +139,7 @@ public class ProductUI {
                     p.setDiscount(discount);
                     break;
                 } else {
-                    System.err.println("Enter discount from 0 to 100 ! ");
+                    System.out.println("Enter discount from 0 to 100 ! ");
                 }
             }
             while (true) {
@@ -148,7 +148,7 @@ public class ProductUI {
                     p.setInventory(inventory);
                     break;
                 } else {
-                    System.err.println("Inventory > 0 !");
+                    System.out.println("Inventory > 0 !");
                 }
             }
 
@@ -162,7 +162,7 @@ public class ProductUI {
                     p.setColor(GetColor.colors.get(color - 1));
                     break;
                 } else {
-                    System.err.println("Enter number from 1 to 8 !");
+                    System.out.println("Enter number from 1 to 8 !");
                 }
             }
 
@@ -189,7 +189,7 @@ public class ProductUI {
         Product p = productService.findById(id);
 
         if (p == null) {
-            System.err.println("Not found!");
+            System.out.println("Not found!");
             return false;
         }
 
@@ -214,7 +214,7 @@ public class ProductUI {
                 p.setColor(GetColor.colors.get(color - 1));
                 break;
             } else {
-                System.err.println("Enter number from 1 to 8 !");
+                System.out.println("Enter number from 1 to 8 !");
             }
         }
 
@@ -238,7 +238,7 @@ public class ProductUI {
         if (!priceInput.isEmpty()) {
             double price = Double.parseDouble(priceInput);
             if (price <= 0) {
-                System.err.println("Price must > 0");
+                System.out.println("Price must > 0");
                 return false;
             }
             p.setRootPrice(price);
@@ -248,7 +248,7 @@ public class ProductUI {
         if (!discountInput.isEmpty()) {
             int discount = Integer.parseInt(discountInput);
             if (discount < 0 || discount > 100) {
-                System.err.println("Discount 0-100");
+                System.out.println("Discount 0-100");
                 return false;
             }
             p.setDiscount(discount);
@@ -258,7 +258,7 @@ public class ProductUI {
         if (!invInput.isEmpty()) {
             int inv = Integer.parseInt(invInput);
             if (inv < 0) {
-                System.err.println("Inventory >= 0");
+                System.out.println("Inventory >= 0");
                 return false;
             }
             p.setInventory(inv);
@@ -269,7 +269,7 @@ public class ProductUI {
             return true;
         }
 
-        System.err.println("Update failed!");
+        System.out.println("Update failed!");
         return false;
     }
 
@@ -279,7 +279,7 @@ public class ProductUI {
         Product p = productService.findById(id);
 
         if (p == null) {
-            System.err.println("Not found!");
+            System.out.println("Not found!");
             return false;
         }
 
@@ -308,7 +308,7 @@ public class ProductUI {
         List<Product> list = productService.search(keyword);
 
         if (list.isEmpty()) {
-            System.err.println("Not found!");
+            System.out.println("Not found!");
         } else {
             showList(list);
         }
@@ -334,7 +334,7 @@ public class ProductUI {
         Product p = productService.findById(id);
 
         if (p == null) {
-            System.err.println("Not found!");
+            System.out.println("Not found!");
             return;
         }
 

@@ -30,7 +30,7 @@ public class LoginUI {
                 Shop.main(args);
             }
         } else {
-            System.err.println("Username or password incorrect!");
+            System.out.println("Username or password incorrect!");
         }
     }
 }

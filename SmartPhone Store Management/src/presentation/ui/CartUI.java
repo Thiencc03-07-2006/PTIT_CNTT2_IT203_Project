@@ -15,7 +15,7 @@ public class CartUI {
 
     public void viewCart() {
         if (!Session.isLogin()) {
-            System.err.println("Please log in first !");
+            System.out.println("Please log in first !");
         } else {
             int customerId = Session.getCurrentUser().getUserId();
             int currentPage = 1;
@@ -23,7 +23,7 @@ public class CartUI {
             while (true) {
                 List<ProductCart> productCarts = cartService.getCartByCustomer(customerId);
                 if (productCarts.isEmpty()) {
-                    System.err.println("Cart empty !");
+                    System.out.println("Cart empty !");
                     break;
                 } else {
                     int skip = (currentPage - 1) * itemPerPage;
@@ -40,7 +40,7 @@ public class CartUI {
                                 currentPage--;
                                 skip = (currentPage - 1) * itemPerPage;
                             } else {
-                                System.err.println("Cannot previous !");
+                                System.out.println("Cannot previous !");
                             }
                             break;
                         }
@@ -52,7 +52,7 @@ public class CartUI {
                                 currentPage++;
                                 skip = (currentPage - 1) * itemPerPage;
                             } else {
-                                System.err.println("Cannot next !");
+                                System.out.println("Cannot next !");
                             }
                             break;
                         }
@@ -73,12 +73,12 @@ public class CartUI {
                                 System.out.println("Order placed successfully!");
                                 return;
                             } else {
-                                System.err.println("Checkout failed!");
+                                System.out.println("Checkout failed!");
                             }
                             break;
                         }
                         default: {
-                            System.err.println("Enter choice from 1 to 6 !");
+                            System.out.println("Enter choice from 1 to 6 !");
                         }
                     }
                 }
@@ -91,7 +91,7 @@ public class CartUI {
         int choice = InputMethod.getNumber("Enter product number (No): ");
 
         if (choice < 0 || choice >= productCarts.size()) {
-            System.err.println("Invalid choice!");
+            System.out.println("Invalid choice!");
             return false;
         }
 
@@ -99,7 +99,7 @@ public class CartUI {
 
         int quantity = InputMethod.getNumber("New quantity: ");
         if (quantity <= 0) {
-            System.err.println("Quantity must > 0 !");
+            System.out.println("Quantity must > 0 !");
             return false;
         }
 
@@ -107,7 +107,7 @@ public class CartUI {
             System.out.println("Updated!");
             return true;
         } else {
-            System.err.println("Update failed!");
+            System.out.println("Update failed!");
             return false;
         }
     }
@@ -115,7 +115,7 @@ public class CartUI {
     private boolean deleteProduct(List<ProductCart> productCarts) {
         int choiceItem = InputMethod.getNumber("Enter product number (No): ");
         if (choiceItem < 0 || choiceItem >= productCarts.size()) {
-            System.err.println("Invalid choice!");
+            System.out.println("Invalid choice!");
             return false;
         }
         ProductCart selected = productCarts.get(choiceItem);
@@ -132,7 +132,7 @@ public class CartUI {
             System.out.println("Deleted successfully!");
             return true;
         } else {
-            System.err.println("Delete failed!");
+            System.out.println("Delete failed!");
             return false;
         }
     }
@@ -150,7 +150,7 @@ public class CartUI {
             System.out.println("Clear cart successfully!");
             return true;
         } else {
-            System.err.println("Clear failed!");
+            System.out.println("Clear failed!");
             return false;
         }
     }
@@ -159,9 +159,9 @@ public class CartUI {
         NumberFormat format = NumberFormat.getInstance(Locale.GERMANY);
         System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.println("|                                                       " + GetColor.GREEN + "CART PRODUCT" + GetColor.RESET + "                                                              |");
-        System.out.println("|━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━|");
-        System.out.printf("| %-3s | %-28s | %-13s | %-8s | %-8s | %-13s | %-13s | %-20s |\n", "No", "Product Name", "finalPrice", "CateId", "Quantity", "Size", "Color", "TotalMoney");
-        System.out.println("|━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━|");
+        System.out.println("|━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━|");
+        System.out.printf("| %-3s | %-39s | %-13s | %-8s | %-13s | %-13s | %-20s |\n", "No", "Product Name", "finalPrice", "Quantity", "Size", "Color", "TotalMoney");
+        System.out.println("|━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━|");
         for (int i = skip; i < (skip + itemPerPage); i++) {
             if (i < size) {
                 productCarts.get(i).displayData(i);

@@ -30,7 +30,7 @@ public class CategoryDAO {
                 c.setCateId(rs.getInt("id"));
                 c.setCateName(rs.getString("name"));
                 c.setStatus(rs.getBoolean("status"));
-                c.setCreatedDate(rs.getDate("created_at"));
+                c.setCreatedDate(rs.getTimestamp("created_at"));
                 list.add(c);
             }
 
@@ -185,7 +185,7 @@ public class CategoryDAO {
             return ps.executeUpdate() > 0;
 
         } catch (SQLIntegrityConstraintViolationException e) {
-            System.err.println("Cannot delete: category is used in product!");
+            System.out.println("Cannot delete: category is used in product!");
         } catch (Exception e) {
             e.printStackTrace();
         }

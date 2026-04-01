@@ -50,7 +50,7 @@ public class Shop {
                 case 5: {
 //                    Customer customer = InputMethod.checkLogin().getFirst();
 //                    if(customer == null){
-//                        System.err.println("Please log in first !");
+//                        System.out.println("Please log in first !");
 //                    }else {
 //                        favoritesFeature.displayFavorites(customer);
 //                    }
@@ -59,7 +59,7 @@ public class Shop {
                 case 6: {
 //                    Customer customer = InputMethod.checkLogin().getFirst();
 //                    if(customer == null){
-//                        System.err.println("Please log in first !");
+//                        System.out.println("Please log in first !");
 //                    }else {
 //                        addressFeature.displayListAddress();
 //                    }
@@ -70,7 +70,7 @@ public class Shop {
                     return;
                 }
                 default: {
-                    System.err.println("Enter choice from 1 to 6 !");
+                    System.out.println("Enter choice from 1 to 6 !");
                 }
             }
         }

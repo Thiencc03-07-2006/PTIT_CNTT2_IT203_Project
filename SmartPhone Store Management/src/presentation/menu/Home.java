@@ -11,12 +11,6 @@ import java.util.Scanner;
 
 public class Home {
     public static void main(String[] args) {
-//        Login login = new Login();
-//        Scanner scanner = new Scanner(System.in);
-//        List<User> checkLogin = InputMethod.checkLogin();
-//        if(checkLogin.getFirst() != null){
-//            InputMethod.logout();
-//        }
         while (true) {
             System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
             System.out.println("|     " + GetColor.GREEN + "WELCOME TO SHOP : IPHONE STORE" + GetColor.RESET + "                                             |                                            |");
@@ -40,8 +34,6 @@ public class Home {
                     break;
                 }
                 case 4: {
-//                    ForgetPassword forgetPassword = new ForgetPassword();
-//                    forgetPassword.forgetPassword();
                     break;
                 }
                 case 5: {
@@ -49,7 +41,7 @@ public class Home {
                     return;
                 }
                 default: {
-                    System.err.println("Enter choice from 1 to 5 !");
+                    System.out.println("Enter choice from 1 to 5 !");
                 }
             }
         }

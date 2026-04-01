@@ -158,7 +158,7 @@ public class ProductDAO {
     }
 
     public boolean softDelete(int id) {
-        String sql = "UPDATE products SET status = false WHERE id = ?";
+        String sql = "UPDATE products SET status = 'INACTIVE' WHERE id = ?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {

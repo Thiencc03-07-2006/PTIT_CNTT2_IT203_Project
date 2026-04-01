@@ -30,8 +30,8 @@ public class ProductCart implements Serializable {
 
     public void displayData(int no) {
         NumberFormat format = NumberFormat.getInstance(Locale.GERMANY);
-        System.out.println("┏━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.printf("| %-3d | %-28s | %-13s | %-8s | %-8d | %-13s | %-13s | %-20s |\n",no, productName, format.format(price) + "VNĐ", "cateId", quantity, storage, color, format.format(getTotalMoney()) + "VNĐ");
-        System.out.println("┗━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━┛");
+        System.out.println("┏━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.printf("| %-3d | %-39s | %-13s | %-8d | %-13s | %-13s | %-20s |\n", no, productName, format.format(price) + "VNĐ", quantity, storage, color, format.format(getTotalMoney()) + "VNĐ");
+        System.out.println("┗━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━┛");
     }
 }

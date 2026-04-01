@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -13,15 +13,13 @@ public class Category implements Serializable {
     private Integer cateId;
     private String cateName;
     private Boolean status = true;
-    private Date createdDate;
+    private Timestamp createdDate;
 
     public Category() {
     }
 
     public Category(String cateName) {
         this.cateName = cateName;
-        this.status = true;
-        this.createdDate = new Date();
     }
 
 
